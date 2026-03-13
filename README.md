@@ -1,5 +1,9 @@
 # 🛰️ Meridian MCP Server
 
+<a href="https://glama.ai/mcp/servers/NHafnerR/meridian-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/NHafnerR/meridian-mcp/badge" alt="Meridian MCP server" />
+</a>
+
 **Structured macroeconomic data for AI agents.**
 
 55 U.S. economic series from FRED with z-scores, percentile ranks, regime classification, and historical comparisons. No more hallucinated economic data.
@@ -49,4 +53,4 @@ Then ask: *"How's the US economy doing?"*
 
 ## License
 
-This is a hosted MCP server. Connect via the SSE endpoint above.
+MIT

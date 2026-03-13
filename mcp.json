@@ -1,0 +1,23 @@
+{
+  "name": "meridian-mcp",
+  "version": "0.1.0",
+  "description": "Structured macroeconomic data for AI agents. 55 FRED series with z-scores, percentile ranks, regime classification.",
+  "transport": {
+    "type": "sse",
+    "url": "https://api.meridianapi.io/sse"
+  },
+  "tools": [
+    {
+      "name": "get_macro_snapshot",
+      "description": "Current macro indicators with z-scores, percentiles, regime classification"
+    },
+    {
+      "name": "explain_macro_change",
+      "description": "What changed in an indicator over a period"
+    },
+    {
+      "name": "compare_macro_regimes",
+      "description": "Compare current conditions to historical periods"
+    }
+  ]
+}
