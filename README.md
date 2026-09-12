@@ -1,56 +1,73 @@
-# 🛰️ Meridian MCP Server
+# Meridian MCP Server
 
-<a href="https://glama.ai/mcp/servers/NHafnerR/meridian-mcp">
-  <img width="380" height="200" src="https://glama.ai/mcp/servers/NHafnerR/meridian-mcp/badge" alt="Meridian MCP server" />
-</a>
+Curated macroeconomic and market context for AI agents through a remote MCP server and REST API.
 
-**Structured macroeconomic data for AI agents.**
+This public repository contains connection metadata and runnable examples, not the private backend. Inspect the [live catalogue](https://meridianapi.io/catalog) for stored series, sources, dates and operational health. Coverage spans FRED, ECB, Eurostat, OECD, IMF, World Bank, Treasury, EIA and selected Yahoo Finance market series.
 
-55 U.S. economic series from FRED with z-scores, percentile ranks, regime classification, and historical comparisons. No more hallucinated economic data.
+## Connect
 
-## Quick Start
-
-Add to your Claude Desktop config:
+Create a free API key in [Account](https://meridianapi.io/account). For remote MCP clients that support Authorization headers:
 
 ```json
 {
   "mcpServers": {
     "meridian": {
-      "url": "https://api.meridianapi.io/sse"
+      "url": "https://api.meridianapi.io/mcp",
+      "headers": { "Authorization": "Bearer <MERIDIAN_API_KEY>" }
     }
   }
 }
 ```
 
-Then ask: *"How's the US economy doing?"*
+Streamable HTTP is the preferred transport. Legacy SSE remains at https://api.meridianapi.io/sse.
+Client configuration formats vary; OAuth-only clients cannot use this API-key configuration.
+Never commit a real key or put it in a URL.
 
-## Tools
+Free keys can call `get_macro_snapshot` and `ask_meridian`. Paid plans also include:
+`explain_macro_change`, `compare_macro_regimes`, `search_series`, `get_series_history`,
+`compare_indicators`, `get_dashboard_summary`, `get_data_health`,
+`get_series_metadata` and `build_chart_spec`.
 
-| Tool | Description |
-|------|------------|
-| `get_macro_snapshot` | Current macro indicators with z-scores, percentiles, regime classification |
-| `explain_macro_change` | What changed in an indicator over a period |
-| `compare_macro_regimes` | Compare today to 2008, COVID, 1970s stagflation, etc. |
+## Runnable Examples
 
-## Coverage
+No Meridian npm or PyPI package is required or currently advertised as published.
 
-55 series across 12 categories: GDP, inflation, employment, interest rates, yield curves, markets (S&P 500, NASDAQ, VIX), commodities (oil, gas), FX, housing, trade, fiscal, and credit.
+```bash
+node examples/macro-briefing.mjs
+python3 examples/macro_briefing.py
+```
+
+Both examples retrieve recent unemployment, CPI and policy-rate observations from public endpoints.
+They print observation dates and units, not an invented forecast or investment recommendation.
+Public detail endpoints return up to 20 recent observations; authenticated deeper-history tools require a paid plan.
+
+```bash
+npm test
+```
 
 ## Pricing
 
-| Tier | Price | Requests/mo |
-|------|-------|------------|
+| Plan | Monthly price | Monthly requests |
+| --- | --- | --- |
 | Free | $0 | 1,000 |
 | Pro | $49 | 50,000 |
-| Enterprise | $299 | Unlimited |
+| Enterprise | $299 | 500,000 |
 
-## Links
+The plan name Enterprise does not certify an SLA or redistribution rights. See [current pricing](https://meridianapi.io/pricing) and [documentation](https://meridianapi.io/docs).
 
-- 🌐 [meridianapi.io](https://meridianapi.io)
-- 📖 [Docs](https://meridianapi.io/docs)
-- 💰 [Pricing](https://meridianapi.io/pricing)
-- 📝 [Sign Up](https://meridianapi.io/signup)
+## Data Trust
+
+Observation date is not publication date. Source values may be revised.
+IMF DataMapper values do not include a reliable actual/estimate boundary in the current connector.
+Future periods are labelled forecasts; historical IMF values remain explicitly unclassified.
+Redistribution rights depend on the original source; MIT licensing of these examples does not license the underlying data.
+
+## Discovery
+
+The canonical remote-server metadata is [server.json](server.json), with registry identity `io.meridianapi/meridian`.
+A previous Glama badge link returned 404 on 2026-09-13 and has been removed; this repository does not claim an accepted directory listing without verification.
 
 ## License
 
-MIT
+The examples and connection metadata in this repository use the existing MIT licensing designation.
+Underlying datasets retain their own source terms.

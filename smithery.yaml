@@ -1,5 +1,5 @@
 name: meridian-mcp
-description: Bloomberg-grade macroeconomic data for AI agents
+description: Curated macroeconomic and market context for AI agents
 startCommand:
   type: remote
   url: https://api.meridianapi.io/sse

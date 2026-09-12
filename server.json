@@ -1,0 +1,36 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.meridianapi/meridian",
+  "title": "Meridian",
+  "description": "Reliable macroeconomic and market data for AI agents via MCP",
+  "version": "0.1.0",
+  "websiteUrl": "https://meridianapi.io",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.meridianapi.io/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer token using your Meridian API key. Create a free key at https://meridianapi.io/signup.",
+          "placeholder": "Bearer mrd_xxx",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    },
+    {
+      "type": "sse",
+      "url": "https://api.meridianapi.io/sse",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer token using your Meridian API key. Create a free key at https://meridianapi.io/signup.",
+          "placeholder": "Bearer mrd_xxx",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}

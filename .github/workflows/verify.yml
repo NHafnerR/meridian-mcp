@@ -1,0 +1,29 @@
+name: Public distribution checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 8 * * 1'
+permissions:
+  contents: read
+jobs:
+  examples:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - run: npm test
+      - name: Live distribution checks
+        if: github.event_name != 'pull_request'
+        run: node scripts/check-distribution.mjs > distribution-report.json
+      - uses: actions/upload-artifact@v4
+        if: always() && github.event_name != 'pull_request'
+        with:
+          name: distribution-report
+          path: distribution-report.json
+          retention-days: 90
