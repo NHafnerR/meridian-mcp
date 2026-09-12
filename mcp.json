@@ -1,23 +1,47 @@
 {
   "name": "meridian-mcp",
   "version": "0.1.0",
-  "description": "Structured macroeconomic data for AI agents. 55 FRED series with z-scores, percentile ranks, regime classification.",
+  "description": "Curated macroeconomic and market context for AI agents. Live coverage and source health at https://meridianapi.io/catalog.",
   "transport": {
-    "type": "sse",
-    "url": "https://api.meridianapi.io/sse"
+    "type": "streamable-http",
+    "url": "https://api.meridianapi.io/mcp",
+    "headers": {
+      "Authorization": "Bearer <MERIDIAN_API_KEY>"
+    }
   },
   "tools": [
     {
-      "name": "get_macro_snapshot",
-      "description": "Current macro indicators with z-scores, percentiles, regime classification"
+      "name": "get_macro_snapshot"
     },
     {
-      "name": "explain_macro_change",
-      "description": "What changed in an indicator over a period"
+      "name": "explain_macro_change"
     },
     {
-      "name": "compare_macro_regimes",
-      "description": "Compare current conditions to historical periods"
+      "name": "compare_macro_regimes"
+    },
+    {
+      "name": "search_series"
+    },
+    {
+      "name": "get_series_history"
+    },
+    {
+      "name": "compare_indicators"
+    },
+    {
+      "name": "get_dashboard_summary"
+    },
+    {
+      "name": "get_data_health"
+    },
+    {
+      "name": "get_series_metadata"
+    },
+    {
+      "name": "build_chart_spec"
+    },
+    {
+      "name": "ask_meridian"
     }
   ]
 }

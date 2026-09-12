@@ -1,15 +1,19 @@
 {
-  "name": "meridian-mcp",
+  "name": "meridian-mcp-examples",
   "version": "0.1.0",
-  "description": "Bloomberg-grade macroeconomic data for AI agents. 55 FRED series via MCP tools.",
-  "keywords": ["mcp", "mcp-server", "macro", "economics", "fred", "finance", "ai-agents"],
+  "private": true,
+  "description": "Public connection metadata and dependency-free macro data examples for Meridian",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "homepage": "https://meridianapi.io",
   "repository": {
     "type": "git",
     "url": "https://github.com/NHafnerR/meridian-mcp"
   },
-  "license": "MIT",
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.0"
-  }
+  "license": "MIT"
 }
